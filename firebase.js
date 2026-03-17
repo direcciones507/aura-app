@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+// IMPORTAR FIREBASE DESDE CDN
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 import {
   getFirestore,
   collection,
@@ -10,22 +12,23 @@ import {
   serverTimestamp,
   query,
   orderBy
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+/* ------------------ CONFIG DE TU PROYECTO ------------------ */
 const firebaseConfig = {
-  apiKey: "AIzaSyAnrizkZp2rGhpYYyek3v49Q6Qs_ylEvbw",
-  authDomain: "aura-84d51.firebaseapp.com",
-  projectId: "aura-84d51",
-  storageBucket: "aura-84d51.firebasestorage.app",
-  messagingSenderId: "1047069147914",
-  appId: "1:1047069147914:web:5f5c7fcf7a7f577ff2f0f3",
-  measurementId: "G-89L47E388H"
+  apiKey: "AIzaSyD7TL0Xb2plH1EMHEPM1kdojc0k6eMkPiE",
+  authDomain: "aura-app-a5920.firebaseapp.com",
+  projectId: "aura-app-a5920",
+  storageBucket: "aura-app-a5920.firebasestorage.app",
+  messagingSenderId: "566562119584",
+  appId: "1:566562119584:web:adf6e708a0cc611e554ec5"
 };
 
+/* ------------------ INICIALIZAR ------------------ */
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+/* ------------------ EXPORTAR PARA app.js ------------------ */
 export {
   db,
   collection,
