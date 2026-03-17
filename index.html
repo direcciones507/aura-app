@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AURA</title>
+  <meta name="theme-color" content="#12061f" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <main class="app">
+      <!-- TOP -->
+      <header class="hero">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Bienvenido</p>
+            <h1>AURA</h1>
+            <p class="subtitle">Tu asistente de voz personal</p>
+          </div>
+
+          <button class="icon-btn" type="button" aria-label="Configuración" data-screen-target="settings">
+            ⚙️
+          </button>
+        </div>
+
+        <section class="welcome-card">
+          <p class="welcome-name">Hola, Jacinto.</p>
+          <h2>¿En qué te ayudo hoy?</h2>
+          <p class="welcome-text">
+            Habla, piensa en voz alta y deja que AURA lo organice contigo.
+          </p>
+        </section>
+      </header>
+
+      <!-- NAVEGACIÓN -->
+      <nav class="tabs" aria-label="Secciones">
+        <button class="tab active" data-screen="home" type="button">Inicio</button>
+        <button class="tab" data-screen="tasks" type="button">Tareas</button>
+        <button class="tab" data-screen="history" type="button">Historial</button>
+        <button class="tab" data-screen="settings" type="button">Configuración</button>
+      </nav>
+
+      <!-- INICIO -->
+      <section id="home" class="screen active">
+        <div class="glass-card main-voice-card">
+          <div class="card-top">
+            <div>
+              <p class="mini-label">Estado de AURA</p>
+              <p id="status" class="status-pill">Estado: listo</p>
+            </div>
+          </div>
+
+          <div class="voice-visual-wrap">
+            <div class="voice-ring"></div>
+            <div class="voice-ring voice-ring-2"></div>
+
+            <button id="micBtn" class="mic-button" type="button" aria-label="Hablar con AURA">
+              <span class="mic-core">🎤</span>
+            </button>
+
+            <div class="voice-bars" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="live-box">
+            <p class="live-label">Texto en vivo</p>
+            <textarea
+              id="mentalDump"
+              placeholder="Escribe o dicta tu tarea, idea o descarga mental..."
+              autocomplete="off"
+              spellcheck="false"
+            ></textarea>
+          </div>
+
+          <div class="actions main-actions">
+            <button id="saveBtn" class="secondary-btn" type="button">💾 Guardar tarea</button>
+            <button id="processBtn" class="primary-btn" type="button">🧠 Procesar texto</button>
+          </div>
+
+          <div id="processedOutput" class="output hidden"></div>
+        </div>
+
+        <!-- CONFIRMACIÓN -->
+        <div id="confirmBox" class="glass-card confirm-box hidden"></div>
+
+        <!-- RESUMEN -->
+        <div class="dashboard-grid">
+          <div class="glass-card mini-card">
+            <p class="mini-label">Pendientes</p>
+            <h3 id="tasksCount">0</h3>
+            <p>Tareas activas hoy</p>
+          </div>
+
+          <div class="glass-card mini-card">
+            <p class="mini-label">Historial</p>
+            <h3 id="historyCount">0</h3>
+            <p>Registros recientes</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAREAS -->
+      <section id="tasks" class="screen">
+        <div class="glass-card section-card">
+          <div class="section-head">
+            <div>
+              <p class="mini-label">Organización</p>
+              <h2>Tareas activas</h2>
+            </div>
+          </div>
+
+          <div id="tasksList" class="list"></div>
+        </div>
+      </section>
+
+      <!-- HISTORIAL -->
+      <section id="history" class="screen">
+        <div class="glass-card section-card">
+          <div class="section-head">
+            <div>
+              <p class="mini-label">Memoria</p>
+              <h2>Historial</h2>
+            </div>
+          </div>
+
+          <div id="historyList" class="list"></div>
+        </div>
+      </section>
+
+      <!-- CONFIGURACIÓN -->
+      <section id="settings" class="screen">
+        <div class="glass-card section-card">
+          <div class="section-head">
+            <div>
+              <p class="mini-label">Preferencias</p>
+              <h2>Configuración</h2>
+            </div>
+          </div>
+
+          <div class="settings-list">
+            <label class="setting-row">
+              <div>
+                <span class="setting-title">Respuesta por voz</span>
+                <small>Permite que AURA te responda hablando</small>
+              </div>
+              <input type="checkbox" id="voiceReplyToggle" checked />
+            </label>
+
+            <label class="setting-row">
+              <div>
+                <span class="setting-title">Idioma de reconocimiento</span>
+                <small>Selecciona cómo AURA escucha tu voz</small>
+              </div>
+              <select id="langSelect">
+                <option value="es-ES">Español</option>
+                <option value="es-US">Español (US)</option>
+                <option value="en-US">English</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="clearHistoryBtn" class="danger-btn" type="button">🗑️ Borrar historial</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- BARRA INFERIOR -->
+      <nav class="bottom-nav" aria-label="Navegación inferior">
+        <button class="tab active" data-screen="home" type="button">🏠<span>Inicio</span></button>
+        <button class="tab" data-screen="tasks" type="button">📌<span>Tareas</span></button>
+        <button class="tab" data-screen="history" type="button">🕘<span>Historial</span></button>
+        <button class="tab" data-screen="settings" type="button">⚙️<span>Ajustes</span></button>
+      </nav>
+    </main>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
